@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: apache_xmlrpc_server-0.3.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../rosjava/devel/share/maven/org/ros/rosjava_core/apache_xmlrpc_server/0.3.7/apache_xmlrpc_server-0.3.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
