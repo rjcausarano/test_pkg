@@ -6,6 +6,8 @@ import org.ros.node.NodeConfiguration;
 import org.ros.node.NodeMain;
 import org.ros.node.NodeMainExecutor;
 
+import java.net.URI;
+
 public class ROSTest {
   private static RosCore rosCore;
   private static DefaultNodeMainExecutor executor = (DefaultNodeMainExecutor) DefaultNodeMainExecutor.newDefault();
@@ -15,11 +17,11 @@ public class ROSTest {
     /*13111 is the ROS port. if you are launching ros files 
       from roscpp or rospy make sure to specify the argument '-p 13111'
       when you run the launch file.*/
-    rosCore = RosCore.newPublic(11311); 
-    rosCore.start();
+//    rosCore = RosCore.newPublic(11311); 
+//    rosCore.start();
 
     try {
-      rosCore.awaitStart();
+//      rosCore.awaitStart();
 
 
       Talker talker = new Talker();
@@ -28,13 +30,14 @@ public class ROSTest {
       execute("Listener", listener);
       execute("Talker", talker);
 
-      Thread.sleep(2000);
+      Thread.sleep(3000);
 
-      executor.shutdownNodeMain(listener);
+  //    executor.shutdownNodeMain(listener);
 
-      Thread.sleep(2000);
+    //  Thread.sleep(2000);
 
-      executor.shutdownNodeMain(talker);
+//      executor.shutdownNodeMain(talker);
+      executor.shutdown();
     }
     catch (Throwable e) {
       System.out.println("Error: " + e.getMessage());
@@ -45,7 +48,13 @@ public class ROSTest {
   {
     System.out.println("Starting " + name + " node...");
     NodeConfiguration config = NodeConfiguration.newPrivate();
-    config.setMasterUri(rosCore.getUri());
+    URI u = null;
+    try {
+        u = new URI("http://Sullust:11311");
+    } catch (Exception e) {
+        System.out.println("Error creating URI");        
+    }
+    config.setMasterUri(u);//rosCore.getUri());
     config.setNodeName(name);
     executor.execute(node, config);
   }
