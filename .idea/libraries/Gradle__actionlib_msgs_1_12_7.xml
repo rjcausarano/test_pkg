@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="Gradle: actionlib_msgs-1.12.7">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../../rosjava/devel/share/maven/org/ros/rosjava_messages/actionlib_msgs/1.12.7/actionlib_msgs-1.12.7.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
